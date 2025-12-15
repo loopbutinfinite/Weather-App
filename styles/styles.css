@@ -97,7 +97,6 @@ body {
     font-family: "Inter", sans-serif;
     font-weight: 300;
     font-style: 20px;
-    letter-spacing: 2px;
 }
 .currentWeatherIconDiv{
     margin-top: -170px;
@@ -108,4 +107,10 @@ body {
     font-weight: bold;
     font-size: 30px;
     letter-spacing: 1px;
+}
+.addToFavTextPositioning{
+    margin-top: 70%
+}
+.currentWeatherHighLowDiv{
+    margin-left: 20px;
 }
