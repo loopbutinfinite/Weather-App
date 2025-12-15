@@ -38,11 +38,3 @@ const fetchForecastJSONData = async () => {
     return data;
 };
 fetchForecastJSONData();
-
-// const convertKelvinToFahrenheit = async () => {
-//     let weatherJSONData = await fetchWeatherJSONData();
-//     let fahrenheitTemp = (weatherJSONData.main.temp - 273.15) * 1.8 + 32;
-//     console.log(`Temp converted to Fahrenheit: ${Math.floor(fahrenheitTemp)}`);
-//     return fahrenheitTemp;
-// };
-// convertKelvinToFahrenheit();
