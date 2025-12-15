@@ -1,0 +1,78 @@
+body {
+    background-image: url("../assets/weatherAppVanessaIMG.gif");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+.inter {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+}
+.weatherAppTitle{
+    font-family: "Inter", sans-serif;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 64px;
+    line-height: 100%;
+    font-optical-sizing: auto;
+}
+
+.search-bar {
+    max-width: 425px;
+    background: white;
+    border-radius: 5px;
+}
+.backgroundCard {
+    background: #000000;
+    opacity: 70%;
+    border-radius: 20px;
+    padding: 20px;
+}
+.weatherDiv {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-template-rows: auto auto;
+    gap: 20px; 
+}
+
+.favoriteCitiesDiv {
+    grid-row: 1 / 3;
+    min-height: 500px; 
+}
+.currentWeatherDiv {
+    grid-area: 1 / 2;
+}
+.forecastDiv {
+    grid-area: 2 / 2;
+    grid-template-columns: repeat(5, 1fr);
+}
+.forecastBackgroundCard {
+    background: #000000;
+    opacity: 70%;
+    border-radius: 25px;
+    padding: 15px 5px;
+}
+.forecastDayAbbreviation{
+    font-family: "Inter", sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+}
+.currentWeatherLocationText{
+    font-family: "Inter", sans-serif;
+    font-size: 64px;
+    font-weight: bold;
+}
+.currentWeatherDateTimeText{
+    font-family: "Inter", sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+}
+.currentWeatherTemp{
+    font-family: "Inter", sans-serif;
+    font-size: 128px;
+    font-weight: 500;
+}
