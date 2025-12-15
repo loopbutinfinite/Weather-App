@@ -21,14 +21,14 @@ body {
     font-optical-sizing: auto;
 }
 
-.search-bar {
-    max-width: 425px;
+.searchBarSizing {
+    width: 425px;
+    height: 55px;
     background: white;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 .backgroundCard {
-    background: #000000;
-    opacity: 70%;
+    background: #000000bd;
     border-radius: 20px;
     padding: 20px;
 }
@@ -51,8 +51,7 @@ body {
     grid-template-columns: repeat(5, 1fr);
 }
 .forecastBackgroundCard {
-    background: #000000;
-    opacity: 70%;
+    background: #000000bd;
     border-radius: 25px;
     padding: 15px 5px;
 }
@@ -65,16 +64,18 @@ body {
     font-family: "Inter", sans-serif;
     font-size: 64px;
     font-weight: bold;
+    margin-top: -20px;
 }
 .currentWeatherDateTimeText{
     font-family: "Inter", sans-serif;
     font-size: 24px;
-    font-weight: 400;
+    font-weight: 200;
 }
 .currentWeatherTemp{
     font-family: "Inter", sans-serif;
     font-size: 128px;
     font-weight: 500;
+    margin-top: -30px;
 }
 .forecastHighTempText{
     font-family: "Inter", sans-serif;
@@ -85,4 +86,26 @@ body {
     font-family: "Inter", sans-serif;
     font-weight: 500;
     font-size: 24px;
+}
+.currentWeatherHighLow{
+    font-family: "Inter", sans-serif;
+    font-weight: 200;
+    font-size: 20px;
+    margin-top: -35px;
+}
+.currentWeatherFahrenText{
+    font-family: "Inter", sans-serif;
+    font-weight: 300;
+    font-style: 20px;
+    letter-spacing: 2px;
+}
+.currentWeatherIconDiv{
+    margin-top: -170px;
+    margin-left: 10px
+}
+.favoriteCitiesText{
+    font-family: "Inter", sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    letter-spacing: 1px;
 }
