@@ -114,3 +114,18 @@ body {
 .currentWeatherHighLowDiv{
     margin-left: 20px;
 }
+.favoriteCitiesEntry{
+    background-color: #1E1C1CA6;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    border-radius: 15px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.tempPositioning{
+    display: flex;
+    justify-content: end;
+    margin-top: -35px;
+    margin-right: 10px;
+}

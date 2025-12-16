@@ -1,6 +1,27 @@
-// const API_Key = "1251dca3c35b57068f0f66e1f77b0475";
+import { API_Key } from "./environment.js";
 
-const fetchWeatherJSONData = async () => {
+const currentUserLocationTemp = document.getElementById("currentUserLocationTemp");
+const currentUserLocationHighsLowsText = document.getElementById("currentUserLocationHighsLowsText");
+const currentWeatherIMG = document.getElementById("currentWeatherIMG");
+const currentLocationText = document.getElementById("currentLocationText");
+const forecastDay1HighTemp = document.getElementById("forecastDay1HighTemp");
+const forecastDay1LowTemp = document.getElementById("forecastDay1LowTemp");
+const forecastDay2HighTemp = document.getElementById("forecastDay2HighTemp");
+const forecastDay2LowTemp = document.getElementById("forecastDay2LowTemp");
+const forecastDay3HighTemp = document.getElementById("forecastDay3HighTemp");
+const forecastDay3LowTemp = document.getElementById("forecastDay3LowTemp");
+const forecastDay4HighTemp = document.getElementById("forecastDay4HighTemp");
+const forecastDay4LowTemp = document.getElementById("forecastDay4LowTemp");
+const forecastDay5HighTemp = document.getElementById("forecastDay5HighTemp");
+const forecastDay5LowTemp = document.getElementById("forecastDay5LowTemp");
+const output = document.getElementById("output");
+const favoriteCitiesDiv = document.getElementById("favoriteCitiesDiv");
+const addIcon = document.getElementById("addIcon");
+const removeIcon = document.getElementById("removeIcon");
+let latitude;
+let longitude;
+
+const fetchCurrentLocationWeatherData = async () => {
     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=37.9575&lon=121.2925&appid=${API_Key}&units=imperial`) //For Stockton, CA lat long coords w/ imperial units
     const data = await response.json();
     console.log(`Current Temperature from API: ${Math.floor(data.main.temp)} Fahrenheit`) //12-15-25
@@ -8,7 +29,7 @@ const fetchWeatherJSONData = async () => {
     console.log(`Current Min temp from API: ${Math.floor(data.main.temp_min)} Fahrenheit`) //12-15-25
     return data;
 };
-fetchWeatherJSONData();
+fetchCurrentLocationWeatherData();
 
 const fetchForecastJSONData = async () => {
     const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=37.9575&lon=121.2925&appid=${API_Key}&units=imperial`); //For Stockton, CA lat long coords w/ imperial units
@@ -40,3 +61,75 @@ const fetchForecastJSONData = async () => {
     return data;
 };
 fetchForecastJSONData();
+
+addIcon.addEventListener("click", () => {
+
+});
+
+removeIcon.addEventListener("click", () => {
+
+});
+
+window.addEventListener("DOMContentLoaded", () => {
+    getUserLocation();
+});
+
+const getUserLocation = () => {
+    if (!navigator.geolocation) {
+        output.textContent = "Geolocation is not supported by your browser.";
+        return;
+    }
+
+    output.textContent = "Getting your location...";
+
+    navigator.geolocation.getCurrentPosition(
+        // Success callback
+        (position) => {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            
+            console.log(`Latitude: ${Math.floor(latitude)}, Longitude: ${Math.floor(longitude)}`);
+            output.textContent = `Lat: ${Math.floor(latitude)}, Long: ${Math.floor(longitude)}`;
+        },
+
+        // Error callback
+        (error) => {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    output.textContent = "User denied the request for Geolocation.";
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    output.textContent = "Location information is unavailable.";
+                    break;
+                case error.TIMEOUT:
+                    output.textContent = "The request to get user location timed out.";
+                    break;
+                default:
+                    output.textContent = "An unknown error occurred.";
+            }
+        }
+    );
+};
+
+const displayCurrentLocationWeatherData = async () => {
+    const fetchCurrentLocationWeatherJSONData = await fetchCurrentLocationWeatherData();
+    currentUserLocationTemp.textContent = `${Math.floor(fetchCurrentLocationWeatherJSONData.main.temp)}°`;
+    currentUserLocationHighsLowsText.textContent = `H: ${Math.floor(fetchCurrentLocationWeatherJSONData.main.temp_max)}° | L: ${Math.floor(fetchCurrentLocationWeatherJSONData.main.temp_min)}°`;
+
+};
+displayCurrentLocationWeatherData();
+
+const displayForecastLocationWeatherData = async () => {
+    const fetchForecastLocationWeatherJSONData = await fetchForecastJSONData();
+    forecastDay1HighTemp.textContent = `${Math.floor(fetchForecastLocationWeatherJSONData.list[0].main.temp_max)}°`;
+    forecastDay1LowTemp.textContent = `${Math.floor(fetchForecastLocationWeatherJSONData.list[0].main.temp_min)}°`;
+    forecastDay2HighTemp.textContent = `${Math.floor(fetchForecastLocationWeatherJSONData.list[8].main.temp_max)}°`;
+    forecastDay2LowTemp.textContent = `${Math.floor(fetchForecastLocationWeatherJSONData.list[8].main.temp_min)}°`;
+    forecastDay3HighTemp.textContent = `${Math.floor(fetchForecastLocationWeatherJSONData.list[16].main.temp_max)}°`;
+    forecastDay3LowTemp.textContent = `${Math.floor(fetchForecastLocationWeatherJSONData.list[16].main.temp_min)}°`;
+    forecastDay4HighTemp.textContent = `${Math.floor(fetchForecastLocationWeatherJSONData.list[24].main.temp_max)}°`;
+    forecastDay4LowTemp.textContent = `${Math.floor(fetchForecastLocationWeatherJSONData.list[24].main.temp_min)}°`;
+    forecastDay5HighTemp.textContent = `${Math.floor(fetchForecastLocationWeatherJSONData.list[32].main.temp_max)}°`;
+    forecastDay5LowTemp.textContent = `${Math.floor(fetchForecastLocationWeatherJSONData.list[32].main.temp_min)}°`;
+};
+displayForecastLocationWeatherData();
