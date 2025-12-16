@@ -18,15 +18,19 @@
 <body>
     <div class="container py-5 text-white">
         <h1 class="d-flex justify-content-center mt-3 mb-5 weatherAppTitle">Weather Forecast</h1>
-        <div class="d-flex justify-content-center mb-5">
-            <input class="searchBarSizing" type="text" placeholder="Enter Location">
+        <div class="input-group searchBarSizing mb-5 mx-auto">
+            <span class="input-group-text bg-white border-0 icon-image-wrapper">
+                <img src="./assets/search.png" style="width: 30px; height: 30px;" alt="Search Icon">
+            </span>
+            <input type="text" class="form-control" placeholder="Enter Location" style="border: none; font-size: 24px; font-family: Inter, sans-serif;">
         </div>
         <div class="weatherDiv">
             <div class="favoriteCitiesDiv backgroundCard">
                 <div class="d-flex justify-content-center">
                     <h3 class="favoriteCitiesText">Favorite Cities</h3>
                 </div>
-                <p class="text-center addToFavTextPositioning">Click <span><img src="./assets/add.png" alt="add icon" style="height: 20px; width: 20px;"></span> to add your favorite city</p>
+                <p class="text-center addToFavTextPositioning">Click <span><img src="./assets/add.png" alt="add icon"
+                            style="height: 20px; width: 20px;"></span> to add your favorite city</p>
             </div>
             <div class="currentWeatherDiv backgroundCard">
                 <div class="d-flex justify-content-between">
