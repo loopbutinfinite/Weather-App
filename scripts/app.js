@@ -1,5 +1,7 @@
+// const API_Key = "1251dca3c35b57068f0f66e1f77b0475";
+
 const fetchWeatherJSONData = async () => {
-    const response = await fetch ("https://api.openweathermap.org/data/2.5/weather?lat=37.9575&lon=121.2925&appid=1251dca3c35b57068f0f66e1f77b0475&units=imperial") //For Stockton, CA lat long coords w/ imperial units
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=37.9575&lon=121.2925&appid=${API_Key}&units=imperial`) //For Stockton, CA lat long coords w/ imperial units
     const data = await response.json();
     console.log(`Current Temperature from API: ${Math.floor(data.main.temp)} Fahrenheit`) //12-15-25
     console.log(`Current Max temp from API: ${Math.floor(data.main.temp_max)} Fahrenheit`) //12-15-25
@@ -9,7 +11,7 @@ const fetchWeatherJSONData = async () => {
 fetchWeatherJSONData();
 
 const fetchForecastJSONData = async () => {
-    const response = await fetch("https://api.openweathermap.org/data/2.5/forecast?lat=37.9575&lon=121.2925&appid=1251dca3c35b57068f0f66e1f77b0475&units=imperial"); //For Stockton, CA lat long coords w/ imperial units
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=37.9575&lon=121.2925&appid=${API_Key}&units=imperial`); //For Stockton, CA lat long coords w/ imperial units
     const data = await response.json();
     // 1st Day forecast (12-16-25 00:00:00)\\
     console.log(`First Day Max Temp: ${Math.floor(data.list[0].main.temp_max)} Fahrenheit`)
