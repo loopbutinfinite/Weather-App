@@ -1,5 +1,4 @@
-// import { API_Key } from "./environment.js";
-const API_Key = "c38d419f4bbf24983a49992d1021fb13"
+import { API_Key } from "./environment.js";
 import { saveToLocalStorage, getFromLocalStorage, removeFromLocalStorage } from "./localstorage.js";
 
 const currentUserLocationTemp = document.getElementById("currentUserLocationTemp");
