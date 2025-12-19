@@ -1,5 +1,5 @@
 import { API_Key } from "./environment.js";
-import { saveToLocalStorage, getFromLocalStorage, removeFromLocalStorage } from "./localstorage.js";
+// import { saveToLocalStorage, getFromLocalStorage, removeFromLocalStorage } from "./localstorage.js";
 
 const currentUserLocationTemp = document.getElementById("currentUserLocationTemp");
 const currentUserLocationHighsLowsText = document.getElementById("currentUserLocationHighsLowsText");
@@ -46,7 +46,7 @@ const getWeatherAPIDataFromSearch = async () => {
     let userSearchEntry = searchBar.value;
     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${userSearchEntry},{state code},{country code}&appid=${API_Key}&units=imperial`);
     const data = await response.json();
-    searchBar.value = "";
+    // searchBar.value = "";
     return data;
 };
 
@@ -54,7 +54,7 @@ const getWeatherForecastWeatherDataFromSearch = async () => {
     let userSearchedEntry = searchBar.value;
     const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${userSearchedEntry},{state code},{country code}&appid=${API_Key}&units=imperial`);
     const data = await response.json();
-    searchBar.value = "";
+    // searchBar.value = "";
     return data;
 };
 
@@ -188,15 +188,45 @@ addIcon.addEventListener("click", () => {
     saveToLocalStorage(cityEntry);
 });
 
-removeIcon.addEventListener("click", () => {
-    removeFromLocalStorage(city);
-});
+// removeIcon.addEventListener("click", () => {
+//     removeFromLocalStorage(city);
+// });
+
+const saveToLocalStorage = (city) => {
+    let favoriteCityArray = getFromLocalStorage();
+
+    if (!favoriteCityArray.includes(city)) {
+        favoriteCityArray.push(city);
+    }
+
+    localStorage.setItem("favoritedCities", JSON.stringify(favoriteCityArray));
+};
+
+const getFromLocalStorage = () => {
+    let value = localStorage.getItem("favoritedCities");
+
+    if (value === null) {
+        return [];
+    }
+
+    return JSON.parse(value)
+};
+
+const removeFromLocalStorage = () => {
+    let favCityArr = getFromLocalStorage();
+
+    let cityIndex = favCityArr.indexOf(city);
+
+    cityIndex.splice(cityIndex, 1)
+    localStorage.setItem("favoritedCities", JSON.stringify(favCityArr));
+};
 
 const displayFavoriteCities = async () => {
     favoriteCitiesDiv.innerHTML = "";
     const getWeatherJSONDataFromSearch = await getWeatherAPIDataFromSearch();
     let favoriteCities = getFromLocalStorage();
     console.log(favoriteCities);
+    console.log(getWeatherJSONDataFromSearch.name)
     favoriteCities.forEach(city => {
         console.log(city);
         const p = document.createElement("p");

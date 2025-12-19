@@ -29,9 +29,11 @@
             <div class="favoriteCitiesDiv backgroundCard">
                 <div>
                     <h3 class="d-flex justify-content-center favoriteCitiesText mb-4">Favorite Cities</h3>
-                    <div id="favoriteCitiesDiv">
-                        <!-- <p class="favoriteCitiesEntry"><img id="removeIcon" class="mx-3" style="width: 25px; height: 25px;" src="./assets/remove.png" alt="remove icon">Sacramento, CA <span id="favCityCurrentTemp" class="tempPositioning">81°</span></p>
-                        <p class="favoriteCitiesEntry"><img id="removeIcon" class="mx-3" style="width: 25px; height: 25px;" src="./assets/remove.png" alt="remove icon">Stockton, CA <span id="favCityCurrentTemp" class="tempPositioning">81°</span></p> -->
+                    <div id="favoriteCitiesDiv" data-bs-spy="scroll" data-bs-target="#navbar-example2"
+                        data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true"
+                        class="scrollspy-example bg-body-tertiary p-3 rounded-2" tabindex="0">
+                        <p class="favoriteCitiesEntry"><img id="removeIcon" class="mx-3" style="width: 25px; height: 25px;" src="./assets/remove.png" alt="remove icon">Sacramento, CA <span id="favCityCurrentTemp" class="tempPositioning">81°</span></p>
+                        <p class="favoriteCitiesEntry"><img id="removeIcon" class="mx-3" style="width: 25px; height: 25px;" src="./assets/remove.png" alt="remove icon">Stockton, CA <span id="favCityCurrentTemp" class="tempPositioning">81°</span></p>
                     </div>
                 </div>
                 <p class="text-center addToFavTextPositioning">Click <span><img src="./assets/add.png" alt="add icon"
@@ -42,18 +44,22 @@
                     <img id="addIcon" class="addIcon" src="./assets/add.png" alt="add icon">
                     <div>
                         <p id="currentDate" class="mb-0 currentWeatherDateTimeText">Tuesday, December 9, 2025</p>
-                        <p id="currentTime" class="mt-0 currentWeatherDateTimeText d-flex justify-content-end">12:00 PM</p>
+                        <p id="currentTime" class="mt-0 currentWeatherDateTimeText d-flex justify-content-end">12:00 PM
+                        </p>
                     </div>
                 </div>
                 <div class="d-flex align-items-center justify-content-between mt-3">
                     <div class="d-flex align-items-center">
                         <div class="currentWeatherIconDiv">
-                            <img class="currentWeatherIcon" id="currentWeatherIcon" src="./assets/sun.png" alt="sun icon">
+                            <img class="currentWeatherIcon" id="currentWeatherIcon" src="./assets/sun.png"
+                                alt="sun icon">
                         </div>
                         <div>
-                            <p id="currentUserLocationTemp" class="currentWeatherTemp mb-0 pb-0 d-flex justify-content-center ms-0">82°</p>
+                            <p id="currentUserLocationTemp"
+                                class="currentWeatherTemp mb-0 pb-0 d-flex justify-content-center ms-0">82°</p>
                             <div class="currentWeatherHighLowDiv">
-                                <p id="currentUserLocationHighsLowsText" class="currentWeatherHighLow mb-0">H: 85° | L: 72°</p>
+                                <p id="currentUserLocationHighsLowsText" class="currentWeatherHighLow mb-0">H: 85° | L:
+                                    72°</p>
                                 <p class="currentWeatherFahrenText ms-2">Fahrenheit</p>
                             </div>
                         </div>
@@ -67,31 +73,36 @@
             <div class="grid-item forecastDiv d-grid gap-3">
                 <div class="forecastBackgroundCard d-flex flex-column align-items-center">
                     <p id="forecastDay1WeekAbbreviation" class="forecastDayAbbreviation">Mon</p>
-                    <img class="forecastDay1WeatherIcon" id="forecastDay1WeatherIcon" class="mb-4" src="./assets/sun.png" alt="rainy icon">
+                    <img class="forecastDay1WeatherIcon" id="forecastDay1WeatherIcon" class="mb-4"
+                        src="./assets/sun.png" alt="rainy icon">
                     <p id="forecastDay1HighTemp" class="forecastHighTempText mb-0">81°</p>
                     <p id="forecastDay1LowTemp" class="forecastLowTempText mb-0">76°</p>
                 </div>
                 <div class="forecastBackgroundCard d-flex flex-column align-items-center">
                     <p id="forecastDay2WeekAbbreviation" class="forecastDayAbbreviation">Tues</p>
-                    <img class="forecastDay2WeatherIcon" id="forecastDay2WeatherIcon" class="mb-4" src="./assets/sun.png" alt="rainy icon">
+                    <img class="forecastDay2WeatherIcon" id="forecastDay2WeatherIcon" class="mb-4"
+                        src="./assets/sun.png" alt="rainy icon">
                     <p id="forecastDay2HighTemp" class="forecastHighTempText mb-0">82°</p>
                     <p id="forecastDay2LowTemp" class="forecastLowTempText mb-0">72°</p>
                 </div>
                 <div class="forecastBackgroundCard d-flex flex-column align-items-center">
                     <p id="forecastDay3WeekAbbreviation" class="forecastDayAbbreviation">Wed</p>
-                    <img class="forecastDay3WeatherIcon" id="forecastDay3WeatherIcon" class="mb-4" src="./assets/partly-cloudy.png" alt="rainy icon">
+                    <img class="forecastDay3WeatherIcon" id="forecastDay3WeatherIcon" class="mb-4"
+                        src="./assets/partly-cloudy.png" alt="rainy icon">
                     <p id="forecastDay3HighTemp" class="forecastHighTempText mb-0">78°</p>
                     <p id="forecastDay3LowTemp" class="forecastLowTempText mb-0">74°</p>
                 </div>
                 <div class="forecastBackgroundCard d-flex flex-column align-items-center">
                     <p id="forecastDay4WeekAbbreviation" class="forecastDayAbbreviation">Thurs</p>
-                    <img class="forecastDay4WeatherIcon" id="forecastDay4WeatherIcon" class="mb-4" src="./assets/weather.png" alt="rainy icon">
+                    <img class="forecastDay4WeatherIcon" id="forecastDay4WeatherIcon" class="mb-4"
+                        src="./assets/weather.png" alt="rainy icon">
                     <p id="forecastDay4HighTemp" class="forecastHighTempText mb-0">77°</p>
                     <p id="forecastDay4LowTemp" class="forecastLowTempText mb-0">72°</p>
                 </div>
                 <div class="forecastBackgroundCard d-flex flex-column align-items-center">
                     <p id="forecastDay5WeekAbbreviation" class="forecastDayAbbreviation">Fri</p>
-                    <img class="forecastDay5WeatherIcon" id="forecastDay5WeatherIcon" class="mb-4" src="./assets/partly-cloudy.png" alt="cloudy icon">
+                    <img class="forecastDay5WeatherIcon" id="forecastDay5WeatherIcon" class="mb-4"
+                        src="./assets/partly-cloudy.png" alt="cloudy icon">
                     <p id="forecastDay5HighTemp" class="forecastHighTempText mb-0">79°</p>
                     <p id="forecastDay5LowTemp" class="forecastLowTempText mb-0">74°</p>
                 </div>
