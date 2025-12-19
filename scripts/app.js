@@ -28,12 +28,8 @@ const forecastDay5HighTemp = document.getElementById("forecastDay5HighTemp");
 const forecastDay5LowTemp = document.getElementById("forecastDay5LowTemp");
 const favoriteCitiesDiv = document.getElementById("favoriteCitiesDiv");
 const addIcon = document.getElementById("addIcon");
-const removeIcon = document.getElementsByClassName("removeIcon");
 const currentDate = document.getElementById("currentDate");
 const currentTime = document.getElementById("currentTime");
-const favCityCurrentTemp = document.getElementById("favCityCurrentTemp");
-let latitude;
-let longitude;
 
 const fetchCurrentLocationWeatherData = async () => {
     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=37.9575&lon=121.2925&appid=${API_Key}&units=imperial`) //For Stockton, CA lat long coords w/ imperial units
