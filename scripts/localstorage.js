@@ -1,10 +1,10 @@
 const saveToLocalStorage = (city) => {
     let favoriteCityArray = getFromLocalStorage();
-
+    
     if (!favoriteCityArray.includes(city)){
         favoriteCityArray.push(city);
     }
-
+    
     localStorage.setItem("favoritedCities", JSON.stringify(favoriteCityArray));
 };
 
@@ -18,13 +18,12 @@ const getFromLocalStorage = () => {
     return JSON.parse(value)
 };
 
-const removeFromLocalStorage = () => {
+const removeFromLocalStorage = (city) => {
     let favCityArr = getFromLocalStorage();
 
-    let cityIndex = favCityArr.indexOf(city);
+    const updatedArr = favCityArr.filter((c) => c !== city);
 
-    cityIndex.splice(cityIndex, 1)
-    localStorage.setItem("favoritedCities", JSON.stringify(favCityArr));
+    localStorage.setItem("favoritedCities", JSON.stringify(updatedArr));
 };
 
 export {saveToLocalStorage, getFromLocalStorage, removeFromLocalStorage};

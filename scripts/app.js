@@ -1,5 +1,5 @@
 import { API_Key } from "./environment.js";
-// import { saveToLocalStorage, getFromLocalStorage, removeFromLocalStorage } from "./localstorage.js";
+import { saveToLocalStorage, getFromLocalStorage, removeFromLocalStorage } from "./localstorage.js";
 
 const currentUserLocationTemp = document.getElementById("currentUserLocationTemp");
 const currentUserLocationHighsLowsText = document.getElementById("currentUserLocationHighsLowsText");
@@ -28,7 +28,7 @@ const forecastDay5HighTemp = document.getElementById("forecastDay5HighTemp");
 const forecastDay5LowTemp = document.getElementById("forecastDay5LowTemp");
 const favoriteCitiesDiv = document.getElementById("favoriteCitiesDiv");
 const addIcon = document.getElementById("addIcon");
-const removeIcon = document.getElementById("removeIcon");
+const removeIcon = document.getElementsByClassName("removeIcon");
 const currentDate = document.getElementById("currentDate");
 const currentTime = document.getElementById("currentTime");
 const favCityCurrentTemp = document.getElementById("favCityCurrentTemp");
@@ -63,6 +63,7 @@ const displaySearchedJSONData = async () => {
     currentUserLocationTemp.textContent = `${Math.floor(getWeatherAPIJSONDataFromSearch.main.temp)}°`
     currentLocationText.textContent = `${getWeatherAPIJSONDataFromSearch.name},${getWeatherAPIJSONDataFromSearch.sys.country}`
     currentUserLocationHighsLowsText.textContent = `H: ${Math.floor(getWeatherAPIJSONDataFromSearch.main.temp_max)}° | L: ${Math.floor(getWeatherAPIJSONDataFromSearch.main.temp_min)}°`;
+    console.log(getWeatherAPIJSONDataFromSearch);
     if (getWeatherAPIJSONDataFromSearch.weather[0].main === "Clear") {
         currentWeatherIcon.src = "../assets/sun.png"
     }
@@ -181,60 +182,36 @@ fetchForecastJSONData();
 addIcon.addEventListener("click", () => {
     let cityEntry = searchBar.value;
     saveToLocalStorage(cityEntry);
+    displayFavoriteCities();
 });
 
-addIcon.addEventListener("click", () => {
-    let cityEntry = searchBar.value;
-    saveToLocalStorage(cityEntry);
+favoriteCitiesDiv.addEventListener("click", (e) => {
+    const removeBtn = e.target.closest(".removeIcon");
+    if (!removeBtn) return;
+    const cityToRemove = removeBtn.dataset.city;
+    removeFromLocalStorage(cityToRemove);
+    displayFavoriteCities();
+    console.log("Firing");
 });
-
-// removeIcon.addEventListener("click", () => {
-//     removeFromLocalStorage(city);
-// });
-
-const saveToLocalStorage = (city) => {
-    let favoriteCityArray = getFromLocalStorage();
-
-    if (!favoriteCityArray.includes(city)) {
-        favoriteCityArray.push(city);
-    }
-
-    localStorage.setItem("favoritedCities", JSON.stringify(favoriteCityArray));
-};
-
-const getFromLocalStorage = () => {
-    let value = localStorage.getItem("favoritedCities");
-
-    if (value === null) {
-        return [];
-    }
-
-    return JSON.parse(value)
-};
-
-const removeFromLocalStorage = () => {
-    let favCityArr = getFromLocalStorage();
-
-    let cityIndex = favCityArr.indexOf(city);
-
-    cityIndex.splice(cityIndex, 1)
-    localStorage.setItem("favoritedCities", JSON.stringify(favCityArr));
-};
 
 const displayFavoriteCities = async () => {
     favoriteCitiesDiv.innerHTML = "";
-    const getWeatherJSONDataFromSearch = await getWeatherAPIDataFromSearch();
-    let favoriteCities = getFromLocalStorage();
-    console.log(favoriteCities);
-    console.log(getWeatherJSONDataFromSearch.name)
-    favoriteCities.forEach(city => {
-        console.log(city);
+
+    const fetchJSONSearchData = await getWeatherAPIDataFromSearch();
+    console.log(fetchJSONSearchData);
+    console.log(fetchJSONSearchData.name)
+    console.log(Math.floor(fetchJSONSearchData.main.temp))
+    const favoriteCities = getFromLocalStorage();
+
+    favoriteCities.forEach((city) => {
         const p = document.createElement("p");
-        p.innerHTML = `<p class="favoriteCitiesEntry"><img id="removeIcon" class="mx-3" style="width: 25px; height: 25px;" src="./assets/remove.png" alt="remove icon">${city} <span id="favCityCurrentTemp" class="tempPositioning">${Math.floor(getWeatherJSONDataFromSearch.main.temp)}°</span></p>`
+        p.classList.add("favoriteCitiesEntry");
+
+        p.innerHTML = `<img class="removeIcon mx-3 removeIconIMGStyling" data-city="${city}" src="./assets/remove.png" alt="remove icon"> ${city} <span id="favCityCurrentTemp" class="tempPositioning">${Math.floor(fetchJSONSearchData.main.temp)}°</span>`;
+
         favoriteCitiesDiv.appendChild(p);
-    })
+    });
 };
-displayFavoriteCities();
 
 window.addEventListener("DOMContentLoaded", () => {
     getUserLocation();
